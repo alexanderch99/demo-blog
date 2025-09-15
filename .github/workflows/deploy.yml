@@ -43,7 +43,7 @@ jobs:
         run: |
           npm i --force
           rm -rf node_modules/.vite
-          npm run build -- --verbose
+          npm run build
           free -h
 
       - name: Deploy frontend
