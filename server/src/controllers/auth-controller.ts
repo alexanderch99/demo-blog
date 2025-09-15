@@ -7,9 +7,9 @@ import AuthError from "../errors/auth-error";
 class AuthController {
   async registration(req: Request, res: Response, next: NextFunction) {
     // throw new BadRequestError(
-    //   "Регистрация недоступна. Этот демонстрационный сайт не работает с персональными данными. 15",
+    //   "Регистрация недоступна. Этот демонстрационный сайт не работает с персональными данными",
     // );
-    console.log("reg");
+    console.log("test deploy");
     try {
       await authService.registration(req.body);
       return this.login(req, res, next);
