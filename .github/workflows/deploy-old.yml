@@ -28,23 +28,12 @@ jobs:
               - 'demo-blog/server/**'
               - 'docker-compose.yml'
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: "22.18.0"
-          cache: "npm"
-          cache-dependency-path: client/package-lock.json
-
       - name: Build frontend
         if: steps.changes.outputs.frontend == 'true'
-        working-directory: client
-        env:
-          NODE_OPTIONS: --max-old-space-size=512
         run: |
+          cd client
           npm i --force
-          rm -rf node_modules/.vite
-          npm run build -- --verbose
-          free -h
+          npm run build
 
       - name: Deploy frontend
         if: steps.changes.outputs.frontend == 'true'
