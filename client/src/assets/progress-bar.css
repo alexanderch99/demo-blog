@@ -1,0 +1,30 @@
+/* #nprogress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  width: 100%;
+  z-index: 9999;
+}
+
+#nprogress .bar {
+  background: snow !important;
+  height: 3px;
+  border-radius: 20px;
+}
+
+#nprogress .peg {
+  box-shadow: 0 0 10px snow, 0 0 5px snow !important;
+}
+
+#nprogress .spinner {
+  width: 20px;
+  height: 20px;
+}
+
+#nprogress .spinner-icon {
+  width: 20px;
+  height: 20px;
+  border-top-color: snow !important;
+  border-left-color: snow !important;
+} */

@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "es2022",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "strict": true,
+    "outDir": "./dist",
+    "rootDir": "./src",
+    /* Рекомендуемые улучшения */
+    "esModuleInterop": true, // Упрощает импорт CommonJS модулей
+    "forceConsistentCasingInFileNames": true, // Предотвращает проблемы с регистром в путях
+    "skipLibCheck": true, // Ускоряет сборку, пропуская проверку типов в node_modules
+    "resolveJsonModule": true, // Позволяет импортировать JSON
+    "noEmitOnError": true, // Не генерировать dist при ошибках
+    "noUnusedLocals": true, // Предупреждать о неиспользуемых переменных
+    "noUnusedParameters": false, // Предупреждать о неиспользуемых аргументах
+    "noFallthroughCasesInSwitch": true, // Предупреждать о пропущенных break в switch
+    "allowSyntheticDefaultImports": true, // Разрешает дефолтные импорты даже без них в модуле
+    "isolatedModules": true // Полезно для совместимости с Babel/ESM
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts", // Исключаем тесты из билда
+    "**/*.test.ts"
+  ]
+}

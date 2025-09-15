@@ -1,0 +1,38 @@
+services:
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+      network: host
+    container_name: mevn_server
+    depends_on:
+      mongo:
+        condition: service_healthy
+    env_file:
+      - ./.env
+    ports:
+      - "127.0.0.1:3001:3000"
+    networks:
+      - mevn-app
+    restart: always
+
+  mongo:
+    image: mongo:latest
+    container_name: mevn_mongo
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - mevn-app
+    restart: always
+    healthcheck:
+      test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping')"]
+      interval: 60s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  mongodb-data:
+
+networks:
+  mevn-app:
