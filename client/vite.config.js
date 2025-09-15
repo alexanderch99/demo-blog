@@ -16,6 +16,7 @@ export default defineConfig({
   build: {
     sourcemap: false,
     minify: "esbuild",
+    reportCompressedSize: false,
     rollupOptions: {
       output: {
         manualChunks: {
