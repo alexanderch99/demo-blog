@@ -9,7 +9,7 @@ class AuthController {
     // throw new BadRequestError(
     //   "Регистрация недоступна. Этот демонстрационный сайт не работает с персональными данными",
     // );
-    console.log("test deploy 3");
+    console.log("test deploy 4");
     try {
       await authService.registration(req.body);
       return this.login(req, res, next);
