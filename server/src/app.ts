@@ -4,7 +4,7 @@ import { FRONTEND_URL, PORT } from "./config/env";
 import router from "./routes";
 import errorMiddleware from "./middlewares/error-middleware";
 import connectDB from "./database";
-// import connectRedis from "./redis";
+import connectRedis from "./redis";
 import validateEnv from "./config/validate-env";
 import cookieParser from "cookie-parser";
 import cors from "cors";
@@ -47,7 +47,7 @@ app.use(errorMiddleware);
 const startApp = async () => {
   validateEnv();
   await connectDB();
-  // await connectRedis();
+  await connectRedis();
   await ensureDefaultRoles();
   await cronService.setDailyStats();
   // await updateModelService();

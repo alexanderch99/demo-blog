@@ -14,12 +14,11 @@
   <div id="modals"></div>
   <GlobalNotification v-if="globalNotificationStore.isNotificationVisible" />
   <HeaderMain v-if="!route.fullPath.startsWith('/admin')" />
-  <p>test 6</p>
   <main
     class="main"
     :style="
       route.fullPath.startsWith('/admin')
-        ? { margin: '0px', minHeight: 'calc(100vh - 80px)' }
+        ? { margin: '0px', minHeight: 'calc(100vh - var(--footer-height))' }
         : { margin: '80px 0px', minHeight: 'calc(100vh - 320px)' }
     "
   >

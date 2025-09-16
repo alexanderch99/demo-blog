@@ -5,12 +5,14 @@
   import ButtonDel from "@/components/UI/ButtonDel.vue";
   import ButtonMain from "@/components/UI/ButtonMain.vue";
   import InputMain from "@/components/UI/InputMain.vue";
+  import SpinnerMain from "@/components/UI/SpinnerMain.vue";
   import adminService from "@/services/admin-service";
   import handleAxiosError from "@/utils/handle-axios-error";
   import { onMounted, ref } from "vue";
 
   const roles = ref([]);
 
+  const isRolesLoaded = ref(false);
   const isNewRoleCreating = ref(false);
   const newRole = ref({
     name: "",
@@ -25,6 +27,8 @@
       roles.value = response.data;
     } catch (error) {
       handleAxiosError(error);
+    } finally {
+      isRolesLoaded.value = true;
     }
   }
 
@@ -160,7 +164,14 @@
     </ModalMain>
   </Teleport>
   <div class="roles">
+    <Transition name="fade">
+      <SpinnerMain
+        v-if="!isRolesLoaded"
+        class="roles__spinner"
+        size="80px"
+    /></Transition>
     <div
+      v-if="isRolesLoaded"
       class="role"
       v-for="role in roles"
       :key="role.id"
@@ -198,6 +209,7 @@
       </div>
     </div>
     <ButtonAddNew
+      v-if="isRolesLoaded"
       class="roles__add-new"
       @click="startNewRoleCreating"
     />
@@ -206,9 +218,14 @@
 
 <style scoped lang="scss">
   .roles {
+    position: relative;
     display: flex;
+    align-items: flex-start;
     flex-wrap: wrap;
     gap: 16px;
+    min-height: calc(
+      100vh - var(--footer-height) - var(--admin-page-padding) * 2
+    );
     font-size: 18px;
     line-height: 18px;
     color: rgb(209, 190, 190);
@@ -220,6 +237,11 @@
       min-height: 60px;
       font: unset;
       color: unset;
+    }
+
+    &__spinner {
+      inset: -8px;
+      border-radius: 16px;
     }
   }
 

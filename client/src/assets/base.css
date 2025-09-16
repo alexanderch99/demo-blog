@@ -1,5 +1,7 @@
 :root {
   --site-background: #242936;
+  --footer-height: 80px;
+  --admin-page-padding: 20px;
 }
 
 *,

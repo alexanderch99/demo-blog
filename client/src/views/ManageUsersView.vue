@@ -8,12 +8,14 @@
   import ModalMain from "@/components/ModalMain.vue";
   import ProfileLink from "@/components/ProfileLink.vue";
   import ProfileInterest from "@/components/ProfileInterest.vue";
+  import SpinnerMain from "@/components/UI/SpinnerMain.vue";
+
   import ManageUsersDo from "@/components/ManageUsersDo.vue";
   import ButtonMain from "@/components/UI/ButtonMain.vue";
   import InputMain from "@/components/UI/InputMain.vue";
   import toMilliseconds from "@/utils/to-milliseconds";
-  import Masonry from "masonry-layout";
 
+  const isUsersLoaded = ref(false);
   const users = ref([]);
   const roles = ref([]);
   const userDataMoreInfo = ref({});
@@ -42,6 +44,8 @@
       users.value = response.data;
     } catch (error) {
       handleAxiosError(error);
+    } finally {
+      isUsersLoaded.value = true;
     }
   }
 
@@ -339,37 +343,45 @@
     </ModalMain>
   </Teleport>
   <div class="users">
-    <div
-      class="user"
-      v-for="user in users"
-      :key="user.id"
-    >
-      <div class="user__who">
-        <AvatarMini
-          class="user__avatar"
-          :avatarUrl="user.avatarUrl"
-          :nicknameFirstLetter="user.nickname?.at(0)"
+    <Transition name="fade">
+      <SpinnerMain
+        v-if="!isUsersLoaded"
+        class="users__spinner"
+        size="80px"
+    /></Transition>
+    <template v-if="isUsersLoaded">
+      <div
+        class="user"
+        v-for="user in users"
+        :key="user.id"
+      >
+        <div class="user__who">
+          <AvatarMini
+            class="user__avatar"
+            :avatarUrl="user.avatarUrl"
+            :nicknameFirstLetter="user.nickname?.at(0)"
+          />
+          <p class="user__id">{{ user.id }} ({{ user.idSimple }})</p>
+          <p class="user__login">{{ user.email }}</p>
+          <p class="user__nickname">
+            {{ user.nickname }}
+          </p>
+          <p class="user__role">{{ user.role?.displayName }}</p>
+          <p class="user__join">
+            Регистрация: {{ formatDateTime(user.createdAt) }}
+          </p>
+        </div>
+        <ManageUsersDo
+          :user="user"
+          @showMoreUserInfo="showMoreUserInfo"
+          @resetUserNickname="resetUserNickname"
+          @resetUserPublicInfo="resetUserPublicInfo"
+          @resetUserAvatar="resetUserAvatar"
+          @showBanForm="showBanForm"
+          @showRoleForm="showRoleForm"
         />
-        <p class="user__id">{{ user.id }} ({{ user.idSimple }})</p>
-        <p class="user__login">{{ user.email }}</p>
-        <p class="user__nickname">
-          {{ user.nickname }}
-        </p>
-        <p class="user__role">{{ user.role?.displayName }}</p>
-        <p class="user__join">
-          Регистрация: {{ formatDateTime(user.createdAt) }}
-        </p>
       </div>
-      <ManageUsersDo
-        :user="user"
-        @showMoreUserInfo="showMoreUserInfo"
-        @resetUserNickname="resetUserNickname"
-        @resetUserPublicInfo="resetUserPublicInfo"
-        @resetUserAvatar="resetUserAvatar"
-        @showBanForm="showBanForm"
-        @showRoleForm="showRoleForm"
-      />
-    </div>
+    </template>
   </div>
 </template>
 
@@ -466,10 +478,19 @@
   }
 
   .users {
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
     align-items: flex-start;
+    min-height: calc(
+      100vh - var(--footer-height) - var(--admin-page-padding) * 2
+    );
+
+    &__spinner {
+      inset: -8px;
+      border-radius: 16px;
+    }
   }
 
   .user {

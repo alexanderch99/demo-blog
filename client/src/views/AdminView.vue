@@ -85,7 +85,8 @@
 <style scoped lang="scss">
   .admin-main {
     margin-left: 300px;
-    padding: 20px;
+    padding: var(--admin-page-padding);
+    min-height: calc(100vh - var(--footer-height));
 
     &__line-charts {
       position: relative;

@@ -22,7 +22,7 @@
 <style scoped>
   .spinner-loading {
     position: absolute;
-    z-index: 999;
+    z-index: 9999;
     display: flex;
     align-items: center;
     justify-content: center;
