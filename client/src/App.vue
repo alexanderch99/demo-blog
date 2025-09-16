@@ -8,6 +8,8 @@
   const globalNotificationStore = useGlobalNotificationStore();
 
   const route = useRoute();
+
+  console.log(123);
 </script>
 
 <template>
