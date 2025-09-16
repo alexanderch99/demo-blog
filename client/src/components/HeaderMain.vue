@@ -10,10 +10,11 @@
 
   import adminIcon from "@/assets/images/admin-icon.png";
   import BarsMain from "./svg/BarsMain.vue";
-  import { ref } from "vue";
+  import { onMounted, ref } from "vue";
 
   const authStore = useAuthStore();
 
+  const isAuthReady = ref(false);
   const isMobileNavActive = ref(false);
 
   function checkIsAuthType() {
@@ -43,6 +44,14 @@
     authStore.logOut();
     location.reload();
   }
+
+  onMounted(async () => {
+    if (typeof authStore.isAuth == "object") {
+      await authStore.isAuth;
+    }
+
+    isAuthReady.value = true;
+  });
 </script>
 
 <template>
@@ -77,8 +86,8 @@
             </li>
             <li class="nav__item">
               <RouterLink
+                :style="{ display: isAuthReady ? 'block' : 'none' }"
                 v-if="authStore.isAuth && checkIsAuthType"
-                class="nav__link"
                 :to="`/users/${authStore.userData?.nicknameSlug}/blogs/`"
                 @click="hideMobileNav"
                 >Мои блоги</RouterLink
@@ -88,6 +97,7 @@
           <ButtonText class="profile notab">
             <RouterLink
               v-if="authStore.isAuth && checkIsAuthType"
+              :style="{ display: isAuthReady ? 'flex' : 'none' }"
               class="nav__link"
               :to="`/users/${authStore.userData?.nicknameSlug}`"
               @click="hideMobileNav"
@@ -123,6 +133,7 @@
           </ButtonText>
           <ButtonText
             v-if="authStore.isAuth"
+            :style="{ display: isAuthReady ? 'block' : 'none' }"
             class="header__logout notab"
             @click="logout"
           >
@@ -196,6 +207,10 @@
     position: relative;
     display: flex;
     height: 100%;
+
+    &__my-blogs {
+      display: none;
+    }
 
     &-wrapper {
       height: 100%;

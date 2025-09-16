@@ -1,12 +1,11 @@
 {
   "compilerOptions": {
-    "target": "es2022",
-    "module": "nodenext",
-    "moduleResolution": "nodenext",
-    "strict": true,
-    "outDir": "./dist",
-    "rootDir": "./src",
-    /* Рекомендуемые улучшения */
+    "target": "es2022", // Указывает версию JavaScript, в которую компилируется TypeScript.
+    "module": "nodenext", // Использует модульную систему Node.js с поддержкой ECMAScript Modules (ESM).
+    "moduleResolution": "nodenext", // Определяет, как TypeScript будет искать модули. Совместимо с ESM и CommonJS.
+    "strict": true, // Включает все строгие проверки типов. Повышает надёжность и безопасность кода.
+    "outDir": "./dist", // Папка, куда будут помещены скомпилированные файлы.
+    "rootDir": "./src", // Корневая папка исходных файлов TypeScript.
     "esModuleInterop": true, // Упрощает импорт CommonJS модулей
     "forceConsistentCasingInFileNames": true, // Предотвращает проблемы с регистром в путях
     "skipLibCheck": true, // Ускоряет сборку, пропуская проверку типов в node_modules
@@ -23,7 +22,5 @@
   ],
   "exclude": [
     "node_modules",
-    "**/*.spec.ts", // Исключаем тесты из билда
-    "**/*.test.ts"
   ]
 }
