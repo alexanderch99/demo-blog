@@ -14,7 +14,7 @@
   <div id="modals"></div>
   <GlobalNotification v-if="globalNotificationStore.isNotificationVisible" />
   <HeaderMain v-if="!route.fullPath.startsWith('/admin')" />
-  <p>test 5</p>
+  <p>test 6</p>
   <main
     class="main"
     :style="
