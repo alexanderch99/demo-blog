@@ -40,6 +40,7 @@ export const useGlobalNotificationStore = defineStore(
     function hideNotification() {
       isNotificationVisible.value = false;
       isCdOut.value = true;
+      clearTimeout(timeout);
     }
 
     return {

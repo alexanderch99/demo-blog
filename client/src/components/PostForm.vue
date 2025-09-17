@@ -1,5 +1,5 @@
 <script setup>
-  import { onMounted, ref } from "vue";
+  import { onMounted, ref, watch } from "vue";
   import ButtonMain from "./UI/ButtonMain.vue";
   import InputMain from "./UI/InputMain.vue";
   import TextareaMain from "./UI/TextareaMain.vue";
@@ -13,6 +13,7 @@
   const emit = defineEmits(["submitForm", "cancelForm"]);
 
   const isTagsAdding = ref(false);
+  const isSubmitDisabled = ref(false);
 
   const post = ref({
     title: "",
@@ -46,10 +47,12 @@
 
   function submitFormHC() {
     emit("submitForm", postCopy.value);
+    isSubmitDisabled.value = true;
   }
 
   function cancelFormHC() {
     emit("cancelForm");
+    isSubmitDisabled.value = false;
   }
 
   onMounted(() => {
@@ -59,6 +62,16 @@
 
     postCopy.value = JSON.parse(JSON.stringify(post.value));
   });
+
+  watch(
+    postCopy,
+    () => {
+      isSubmitDisabled.value = false;
+    },
+    {
+      deep: true,
+    },
+  );
 </script>
 
 <template>
@@ -143,6 +156,7 @@
       <ButtonMain
         class="post-form__button post-form__button--submit"
         @click="submitFormHC"
+        :disabled="isSubmitDisabled"
         ><slot
       /></ButtonMain>
       <ButtonMain

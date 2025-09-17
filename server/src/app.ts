@@ -53,7 +53,6 @@ const startApp = async () => {
   // await updateModelService();
   app.listen(PORT || 3000, () => {
     console.log(`Сервер запущен на порту ${PORT}`);
-    console.log(123);
   });
 };
 

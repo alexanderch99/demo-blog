@@ -86,7 +86,7 @@
             </li>
             <li class="nav__item">
               <RouterLink
-                :style="{ display: isAuthReady ? 'block' : 'none' }"
+                :style="{ display: isAuthReady ? 'flex' : 'none' }"
                 v-if="authStore.isAuth && checkIsAuthType"
                 :to="`/users/${authStore.userData?.nicknameSlug}/blogs/`"
                 @click="hideMobileNav"

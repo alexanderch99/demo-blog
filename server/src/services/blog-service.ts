@@ -5,13 +5,13 @@ import NotFoundError from "../errors/not-found-error";
 import BlogModel from "../models/blog-model";
 import PostModel from "../models/post-model";
 import UserModel from "../models/user-model";
+import { saveToRedis } from "../redis/redis-utils";
 import { deleteFileFromS3 } from "../s3/s3-delete";
 import { uploadFileToS3 } from "../s3/s3-upload";
 import checkFileType from "../utils/check-file-type";
 import { allowedImgExtensions } from "../utils/constants";
 import toSlug from "../utils/to-slug";
 import { rm } from "node:fs/promises";
-// import { saveToRedis } from "../redis/redis-utils";
 
 interface INewBlogData {
   title: string;
@@ -101,7 +101,7 @@ class BlogService {
     return userBlog;
   }
 
-  async getPopularBlogs() {
+  async getPopularBlogs(originalUrl: string, ttl: number) {
     const blogs = await BlogModel.find({ hidden: false })
       .limit(7)
       .sort({ ratingCount: -1 })
@@ -109,6 +109,10 @@ class BlogService {
         path: "author",
         select: "id nickname nicknameSlug avatarUrl",
       });
+
+    console.log(originalUrl);
+    await saveToRedis(originalUrl, blogs, ttl || 60);
+    console.log("saved");
 
     return blogs;
   }

@@ -5,7 +5,7 @@ import sameUserMiddleware from "../middlewares/same-user-middleware";
 import uploadBlogCover from "../multer/multer-blog-cover-upload";
 import { validateBlog } from "../validations/validate-blog";
 import checkUserMiddleware from "../middlewares/check-user-middleware";
-// import cacheMiddleware from "../middlewares/cache-middleware";
+import cacheMiddleware from "../middlewares/cache-middleware";
 // cacheMiddleware(60)
 
 const blogRouter = Router();
@@ -18,7 +18,11 @@ blogRouter.post(
 blogRouter.get("/all-blogs/get", blogController.getAllBlogs);
 blogRouter.get("/user-blogs/get/:nicknameSlug", blogController.getUserBlogs);
 blogRouter.get("/user-blog/get/:blogSlug", blogController.getUserBlog);
-blogRouter.get("/popular-blogs/get", blogController.getPopularBlogs);
+blogRouter.get(
+  "/popular-blogs/get",
+  cacheMiddleware(60),
+  blogController.getPopularBlogs,
+);
 blogRouter.patch(
   "/title/update",
   [authMiddleware, checkUserMiddleware, sameUserMiddleware, validateBlog],

@@ -1,19 +1,29 @@
 <script setup>
-  import { ref } from "vue";
+  import { ref, watch } from "vue";
   import ButtonMain from "./UI/ButtonMain.vue";
   import InputMain from "./UI/InputMain.vue";
 
   const emit = defineEmits(["createBlog", "cancelBlogCreate"]);
 
   const blogTitle = ref("");
+  const isSubmitDisabled = ref(false);
 
   function createBlogHC() {
+    isSubmitDisabled.value = true;
     emit("createBlog", blogTitle.value);
   }
 
   function cancelBlogCreateHc() {
+    isSubmitDisabled.value = false;
     emit("cancelBlogCreate");
   }
+
+  watch(
+    () => blogTitle.value,
+    () => {
+      isSubmitDisabled.value = false;
+    },
+  );
 </script>
 
 <template>
@@ -31,6 +41,7 @@
       <ButtonMain
         class="blog-create__submit-button"
         @click="createBlogHC"
+        :disabled="isSubmitDisabled"
         >Создать</ButtonMain
       >
       <ButtonMain

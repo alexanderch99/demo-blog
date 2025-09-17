@@ -70,7 +70,10 @@ class BlogController {
 
   async getPopularBlogs(req: Request, res: Response, next: NextFunction) {
     try {
-      const blogs = await blogService.getPopularBlogs();
+      const blogs = await blogService.getPopularBlogs(
+        req.originalUrl,
+        res.locals.ttl,
+      );
       setTimeout(() => {
         res.json(blogs);
       }, 1000);
