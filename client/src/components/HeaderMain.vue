@@ -84,9 +84,12 @@
                 <HomeMain class="header__icon" />
               </RouterLink>
             </li>
-            <li class="nav__item">
+            <li
+              class="nav__item"
+              :style="{ display: isAuthReady ? 'flex' : 'none' }"
+            >
               <RouterLink
-                :style="{ display: isAuthReady ? 'flex' : 'none' }"
+                class="nav__link"
                 v-if="authStore.isAuth && checkIsAuthType"
                 :to="`/users/${authStore.userData?.nicknameSlug}/blogs/`"
                 @click="hideMobileNav"
