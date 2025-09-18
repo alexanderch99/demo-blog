@@ -1,7 +1,14 @@
-<script setup></script>
+<script setup>
+  import { useRoute } from "vue-router";
+
+  const route = useRoute();
+</script>
 
 <template>
-  <footer class="footer">
+  <footer
+    class="footer"
+    :class="{ 'admin-page-footer': route.fullPath.startsWith('/admin') }"
+  >
     <div class="container footer__container">
       <div class="footer__items">
         <div class="footer__copy">2025 DemoSite</div>
@@ -69,6 +76,24 @@
         height: 160px;
         flex-direction: column;
         gap: 16px;
+        height: 160px;
+        font-size: 0.8em;
+        line-height: 0.8em;
+      }
+    }
+  }
+
+  .admin-page-footer {
+    @media (max-width: 1499.98px) {
+      height: 160px;
+    }
+
+    & .footer__items {
+      @media (max-width: 1499.98px) {
+        height: 160px;
+        flex-direction: column;
+        gap: 16px;
+        align-items: flex-end;
       }
     }
   }

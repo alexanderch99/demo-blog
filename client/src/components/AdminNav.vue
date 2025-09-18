@@ -1,17 +1,45 @@
 <script setup>
+  import { ref, watch } from "vue";
   import { useAuthStore } from "@/stores/auth-store";
   import AvatarMini from "./AvatarMini.vue";
   import GroupMain from "./svg/GroupMain.vue";
   import HomeMain from "./svg/HomeMain.vue";
   import UsersMain from "./svg/UsersMain.vue";
   import ChartLine from "./svg/ChartLine.vue";
+  import BarsMain from "./svg/BarsMain.vue";
+  import { onBeforeRouteUpdate } from "vue-router";
 
   const authStore = useAuthStore();
+
+  const isMobileAdminNavAcitve = ref(false);
+
+  onBeforeRouteUpdate(() => {
+    isMobileAdminNavAcitve.value = false;
+  });
+
+  watch(
+    () => isMobileAdminNavAcitve.value,
+    () => {
+      isMobileAdminNavAcitve.value
+        ? (document.body.style.overflow = "hidden")
+        : (document.body.style.overflow = "unset");
+    },
+  );
 </script>
 
 <template>
   <div class="admin-nav-wrapper">
-    <nav class="admin-nav">
+    <div
+      class="toggle-mobile-admin-nav"
+      :class="{ active: isMobileAdminNavAcitve }"
+      @click="isMobileAdminNavAcitve = !isMobileAdminNavAcitve"
+    >
+      <BarsMain class="toggle-mobile-admin-nav__icon" />
+    </div>
+    <nav
+      class="admin-nav"
+      :class="{ active: isMobileAdminNavAcitve }"
+    >
       <div class="admin-user">
         <RouterLink
           class="admin-user__link"
@@ -62,9 +90,45 @@
       </div>
     </nav>
   </div>
+  <Transition name="fade">
+    <div
+      v-if="isMobileAdminNavAcitve"
+      class="admin-dim"
+    >
+      123
+    </div>
+  </Transition>
 </template>
 
 <style scoped lang="scss">
+  .admin-dim {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 5555;
+  }
+
+  .toggle-mobile-admin-nav {
+    position: fixed;
+    top: 8px;
+    left: 8px;
+    cursor: pointer;
+    z-index: 999999;
+    transition: left 0.3s ease;
+
+    @media (max-width: 1099.98px) {
+      &.active {
+        left: 308px;
+      }
+    }
+
+    &__icon {
+      width: 32px;
+      height: 32px;
+      cursor: pointer;
+    }
+  }
+
   .icon {
     width: 24px;
     height: 24px;
@@ -95,6 +159,18 @@
     cursor: default;
     z-index: 999999;
     max-height: 100vh;
+    transition: left 0.3s ease;
+
+    @media (max-width: 1099.98px) {
+      left: -300px;
+
+      &.active {
+        left: 0px;
+      }
+
+      font-size: 0.9em;
+      line-height: 0.9em;
+    }
 
     &__scroll {
       height: 100%;

@@ -506,6 +506,15 @@
     font-family: monospace;
     color: rgba(209, 190, 190);
 
+    @media (max-width: 999.98px) {
+      font-size: 0.75em;
+      flex-grow: 1;
+    }
+
+    @media (max-width: 499.98px) {
+      font-size: 0.6em;
+    }
+
     &__do {
       margin-top: 20px;
       font-size: 16px;
@@ -518,6 +527,10 @@
       grid-template: auto / 144px 560px;
       column-gap: 16px;
       align-items: center;
+
+      @media (max-width: 999.98px) {
+        grid-template: auto / 96px 1fr;
+      }
     }
 
     &__avatar {
@@ -527,9 +540,19 @@
       grid-row: span 5;
       border: 2px solid #1e1d24;
 
+      @media (max-width: 999.98px) {
+        width: 96px;
+        height: 96px;
+      }
+
       > * {
         font-size: 100px;
         line-height: 100px;
+
+        @media (max-width: 999.98px) {
+          font-size: 64px;
+          line-height: 64px;
+        }
       }
     }
   }

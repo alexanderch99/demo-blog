@@ -125,12 +125,22 @@
     justify-content: center;
     border-radius: 50%;
 
+    @media (max-width: 799.98px) {
+      width: 32px;
+      height: 32px;
+    }
+
     &__icon {
       width: 28px;
       height: 28px;
       transition: all 0.3s ease;
       cursor: pointer;
       transform: rotate(90deg);
+
+      @media (max-width: 799.98px) {
+        width: 24px;
+        height: 24px;
+      }
 
       &.active {
         transform: rotate(-90deg);

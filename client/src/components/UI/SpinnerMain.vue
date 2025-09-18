@@ -50,7 +50,9 @@
     font-family: monospace;
     color: gray;
     position: absolute;
-    margin-top: 80px;
+    top: 60%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   @keyframes spin {

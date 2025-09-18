@@ -88,7 +88,7 @@
 
 <style scoped lang="scss">
   .section-spinner {
-    position: static;
+    position: relative;
     width: 100%;
     height: 400px;
     border-radius: 10px;

@@ -88,6 +88,13 @@
     padding: var(--admin-page-padding);
     min-height: calc(100vh - var(--footer-height));
 
+    @media (max-width: 1099.98px) {
+      margin-left: 36px;
+    }
+    @media (max-width: 499.98px) {
+      margin-left: 0px;
+    }
+
     &__line-charts {
       position: relative;
     }

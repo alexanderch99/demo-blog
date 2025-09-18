@@ -232,12 +232,23 @@
     color: rgb(209, 190, 190);
     font-family: monospace;
 
+    @media (max-width: 999.98px) {
+      align-items: stretch;
+    }
+
     &__add-new {
       flex-shrink: 0;
       min-width: 300px;
       min-height: 60px;
       font: unset;
       color: unset;
+
+      @media (max-width: 999.98px) {
+        min-width: 200px;
+        min-height: revert;
+        font-size: 0.8em;
+        line-height: 0.8em;
+      }
     }
 
     &__spinner {
@@ -253,6 +264,12 @@
     padding: 8px 16px;
     border-radius: 12px;
 
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+      line-height: 0.8em;
+      padding: 6px 12px;
+    }
+
     &.secured {
       outline: 2px solid silver;
     }
@@ -261,12 +278,21 @@
       position: absolute;
       top: 8px;
       right: 12px;
+
+      @media (max-width: 999.98px) {
+        top: 5px;
+      }
     }
 
     &__is-admin {
       margin-top: 4px;
       font-size: 16px;
       line-height: 16px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.9em;
+        line-height: 0.9em;
+      }
 
       &.admin {
         color: rgb(255, 50, 50);
@@ -280,6 +306,11 @@
     &__icon {
       width: 24px;
       height: 24px;
+
+      @media (max-width: 999.98px) {
+        width: 18px;
+        height: 18px;
+      }
 
       &-wrapper {
         margin-right: 8px;

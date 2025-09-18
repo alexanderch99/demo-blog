@@ -231,6 +231,7 @@
 
     @media (max-width: 999.98px) {
       gap: 32px;
+      z-index: 99999;
 
       &-wrapper {
         position: fixed;
@@ -239,7 +240,7 @@
         bottom: 0;
         left: 0;
         background-color: #1e1d24;
-        z-index: 9999;
+        z-index: 99999;
         transition: top 0.3s ease;
 
         &__close {

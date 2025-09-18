@@ -350,3 +350,9 @@ textarea {
 
 @media (max-width: 479.98px) {
 } */
+
+@media (max-width: 999.98px) {
+  :root {
+    --admin-page-padding: 8px;
+  }
+}

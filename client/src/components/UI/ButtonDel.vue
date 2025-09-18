@@ -14,11 +14,21 @@
     width: 40px;
     height: 40px;
 
+    @media (max-width: 999.98px) {
+      width: 32px;
+      height: 32px;
+    }
+
     &__icon {
       position: relative;
       top: -2px;
       width: 24px;
       height: 24px;
+
+      @media (max-width: 999.98px) {
+        width: 18px;
+        height: 18px;
+      }
     }
   }
 </style>
