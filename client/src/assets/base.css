@@ -4,6 +4,12 @@
   --admin-page-padding: 20px;
 }
 
+@media (max-width: 999.98px) {
+  :root {
+    --footer-height: 160px;
+  }
+}
+
 *,
 *::before,
 *::after {

@@ -19,6 +19,14 @@
             >Политика конфиденциальности</RouterLink
           >
         </div>
+        <div class="source-code">
+          <a
+            href="https://github.com/alexanderch99/demo-blog"
+            class="footer__link"
+            target="_blank"
+            >GitHub</a
+          >
+        </div>
       </div>
     </div>
   </footer>
@@ -32,6 +40,10 @@
     height: 80px;
     background-color: transparent;
     background-color: #1e1d24;
+
+    @media (max-width: 999.98px) {
+      height: 160px;
+    }
 
     &__link {
       text-decoration: underline snow;
@@ -52,6 +64,12 @@
       font-size: 16px;
       line-height: 16px;
       font-family: monospace;
+
+      @media (max-width: 999.98px) {
+        height: 160px;
+        flex-direction: column;
+        gap: 16px;
+      }
     }
   }
 </style>

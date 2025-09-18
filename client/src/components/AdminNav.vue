@@ -94,6 +94,7 @@
     background-color: #1e1d24;
     cursor: default;
     z-index: 999999;
+    max-height: 100vh;
 
     &__scroll {
       height: 100%;
