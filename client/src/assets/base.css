@@ -35,7 +35,7 @@ body {
 html,
 body {
   height: 100%;
-  min-width: 320px;
+  min-width: 375px;
   width: 100%;
   font-size: 100%;
   line-height: 1;
@@ -47,6 +47,7 @@ body {
     "Noto Sans", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol";
   scrollbar-gutter: stable;
+  overflow-x: hidden; /* Баг с невидимым пустым местом в самом низу сайта */
 }
 
 ::-webkit-file-upload-button {
