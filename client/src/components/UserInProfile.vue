@@ -271,6 +271,10 @@
     word-break: break-all;
     margin-bottom: 100px;
 
+    @media (max-height: 799.98px) {
+      flex-direction: column;
+    }
+
     &__icon {
       width: 20px;
       height: 20px;
@@ -332,6 +336,12 @@
       flex-wrap: wrap;
       margin-bottom: 30px;
       padding-right: 48px;
+
+      @media (max-height: 799.98px) {
+        flex-direction: column;
+        justify-content: center;
+        padding-right: 0px;
+      }
     }
 
     & &__edit {

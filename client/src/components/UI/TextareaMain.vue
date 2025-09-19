@@ -9,7 +9,7 @@
   />
 </template>
 
-<style scoped>
+<style scoped lang="scss">
   .textarea-main {
     min-width: 100%;
     max-width: 100%;
@@ -20,5 +20,10 @@
     font: inherit;
     color: inherit;
     background-color: #56555e;
+
+    @media (max-height: 999.98px) {
+      font-size: 0.8em;
+      padding: 8px 12px;
+    }
   }
 </style>

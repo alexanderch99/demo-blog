@@ -4,19 +4,23 @@
 </script>
 
 <template>
-  <ButtonMain class="button-edit"
-    ><TrashMain class="button-edit__icon"
+  <ButtonMain class="button-del"
+    ><TrashMain class="button-del__icon"
   /></ButtonMain>
 </template>
 
 <style scoped lang="scss">
-  .button-edit {
+  .button-del {
     width: 40px;
     height: 40px;
 
     @media (max-width: 999.98px) {
       width: 32px;
       height: 32px;
+    }
+
+    @media (max-width: 599.98px) {
+      padding: 10px 0px;
     }
 
     &__icon {

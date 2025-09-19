@@ -34,7 +34,7 @@
   function hideMobileNav() {
     if (isMobileNavActive.value) {
       isMobileNavActive.value = false;
-      document.body.style.overflow = "auto";
+      document.body.style.overflowY = "auto";
     }
   }
 

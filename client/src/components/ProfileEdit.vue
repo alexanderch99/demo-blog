@@ -345,8 +345,18 @@
       gap: 20px;
       margin-top: 50px;
 
+      @media (max-height: 999.98px) {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.8em;
+      }
+
       &-button {
         margin: 0;
+
+        @media (max-height: 999.98px) {
+          width: 100%;
+        }
       }
     }
 
@@ -374,6 +384,10 @@
       display: block;
       margin-bottom: 8px;
       margin-left: 4px;
+
+      @media (max-height: 999.98px) {
+        font-size: 0.9em;
+      }
     }
 
     &__link-wrapper,

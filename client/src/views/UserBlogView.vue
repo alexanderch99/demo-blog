@@ -390,6 +390,10 @@
       width: calc(50% - 8px);
       margin-bottom: 16px;
 
+      @media (max-height: 999.98px) {
+        width: 100%;
+      }
+
       &.pinned {
         outline: 2px solid blueviolet;
       }
@@ -402,6 +406,10 @@
 
     &__add {
       height: 320px;
+
+      @media (max-height: 999.98px) {
+        height: 100px;
+      }
 
       &-button {
         width: 100%;

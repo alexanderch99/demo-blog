@@ -5,7 +5,7 @@
   import blogService from "@/services/blog-service";
   import postService from "@/services/post-service";
   import handleAxiosError from "@/utils/handle-axios-error";
-  import { onBeforeMount, onMounted, ref } from "vue";
+  import { onBeforeMount, ref } from "vue";
 
   const latestPosts = ref([]);
   const popularBlogs = ref([]);

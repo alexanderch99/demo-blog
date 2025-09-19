@@ -47,6 +47,10 @@
       padding-bottom: var(--footer-height);
     }
 
+    @media (max-height: 799.98px) {
+      padding-top: 200px;
+    }
+
     &__body {
       margin: 20px;
       padding: 50px;
@@ -54,11 +58,12 @@
       border-radius: 20px;
 
       @media (max-width: 999.98px) {
-        padding: 20px;
+        padding: 50px 20px;
+        margin: 8px;
       }
 
       @media (max-width: 499.98px) {
-        padding: 10px;
+        padding: 50px 10px;
       }
     }
 
@@ -84,6 +89,24 @@
       line-height: 40px;
       width: 50px;
       height: 50px;
+
+      @media (max-width: 999.98px) {
+        width: 40px;
+        height: 40px;
+        font-size: 32px;
+        line-height: 32px;
+        top: 8px;
+        right: 8px;
+      }
+
+      @media (max-height: 799.98px) {
+        top: 204px;
+      }
+
+      @media (min-height: 799.98px) {
+        top: 2px;
+        right: 2px;
+      }
     }
 
     &-mask {

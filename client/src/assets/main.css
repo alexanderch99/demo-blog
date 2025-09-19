@@ -99,7 +99,11 @@ a:focus {
     line-height: 0.9em;
   }
 
+  .section-heading > span {
+    padding: 0px 12px;
+  }
+
   .form-count {
-    font-size: 0.8em;
+    font-size: 0.7em;
   }
 }

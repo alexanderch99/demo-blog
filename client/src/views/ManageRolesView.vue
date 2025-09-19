@@ -282,6 +282,10 @@
 
       @media (max-width: 999.98px) {
         top: 5px;
+
+        > * {
+          top: -4px;
+        }
       }
     }
 
@@ -367,6 +371,10 @@
     &__submit {
       width: 100%;
       margin-top: 40px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.9em;
+      }
     }
   }
 </style>

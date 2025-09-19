@@ -1,5 +1,5 @@
 <script setup>
-  import { ref, onMounted } from "vue";
+  import { ref, onMounted, computed } from "vue";
 
   import adminService from "@/services/admin-service";
   import handleAxiosError from "@/utils/handle-axios-error";
@@ -239,7 +239,7 @@
         <label
           for="ban"
           class="ban-form__label"
-          >Выбор срока блокировки: на<!---->
+          >Выбор срока блокировки: на
         </label>
         <InputMain
           placeholder="1-999"
@@ -324,8 +324,7 @@
             :value="role.id"
           >
             {{ role.displayName }} ({{ role.priority }} | {{ role.name
-            }}<!---->
-            <!---->{{ role.isAdmin ? " | Администратор" : "" }})
+            }}{{ role.isAdmin ? " | Администратор" : "" }})
           </option>
         </select>
         <ButtonMain
@@ -400,6 +399,10 @@
     margin-bottom: 20px;
     text-align: center;
 
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+    }
+
     &__unban {
       margin-top: 20px;
     }
@@ -408,12 +411,20 @@
   .user-role-status {
     margin-bottom: 20px;
     text-align: center;
+
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+    }
   }
 
   .role-form {
     margin-top: 80px;
     font-family: monospace;
     text-align: center;
+
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+    }
 
     &__select,
     &__change-role {
@@ -423,12 +434,20 @@
     &__change-role {
       margin-top: 20px;
     }
+
+    &__select {
+      font-size: 0.8em;
+    }
   }
 
   .ban-form {
     margin-top: 80px;
     font-family: monospace;
     text-align: center;
+
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+    }
 
     &__ban {
       width: 100%;
@@ -439,6 +458,10 @@
       color: rgb(209, 190, 190);
       font-size: 18px;
       line-height: 18px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__input {
@@ -447,10 +470,27 @@
       margin: 0px 12px;
       font-size: 18px;
       line-height: 18px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+
+        padding: 4px 8px !important;
+        margin: 0px 6px;
+      }
+    }
+
+    &__select {
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
   }
 
   .more-info {
+    @media (max-width: 999.98px) {
+      font-size: 0.8em;
+    }
+
     &__item:not(:first-child) {
       margin-top: 32px;
     }

@@ -183,12 +183,11 @@
         <div class="post-item__author-created">
           <RouterLink
             v-if="home"
+            class="post-item__blog-link"
             :to="`/users/${post.author?.nicknameSlug}/blogs/${post.blog?.blogSlug}`"
           >
-            {{ formatDateTime(post.createdAt) }} в блог
-            <span class="post-item__blog-link">{{
-              post.blog?.title
-            }}</span></RouterLink
+            <span>{{ formatDateTime(post.createdAt) }} в блог</span>
+            <span>{{ post.blog?.title }}</span></RouterLink
           >
           <span v-else>{{ formatDateTime(post.createdAt) }}</span>
         </div>
@@ -290,6 +289,10 @@
     font-size: 16px;
     line-height: 16px;
     color: gray;
+
+    @media (max-width: 999.98px) {
+      font-size: 0.9em;
+    }
   }
 
   .post-item {
@@ -297,6 +300,10 @@
     padding: 16px 16px 12px 16px;
     background-color: #1e1d24;
     border-radius: 10px;
+
+    @media (max-width: 999.98px) {
+      padding: 12px 8px 12px 8px;
+    }
 
     &__button {
       &--edit {
@@ -370,6 +377,11 @@
       display: grid;
       grid-template: auto / 50px 280px;
       column-gap: 20px;
+
+      @media (max-width: 999.98px) {
+        width: 100%;
+        grid-template: auto / 50px 1fr;
+      }
     }
 
     &__author-avatar {
@@ -381,6 +393,10 @@
       font-size: 18px;
       line-height: 18px;
       word-break: break-all;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__author-created {
@@ -391,7 +407,13 @@
       color: gray;
       white-space: nowrap;
 
-      & span.post-item__blog-link {
+      @media (max-width: 999.98px) {
+        white-space: pre-wrap;
+        font-size: 0.6em;
+      }
+
+      & .post-item__blog-link > span:last-child {
+        margin-left: 8px;
         color: snow;
       }
     }
@@ -405,6 +427,10 @@
       overflow-wrap: break-word;
       white-space: pre-wrap;
       padding-right: 32px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.9em;
+      }
     }
 
     &__body {
@@ -413,6 +439,10 @@
       overflow-wrap: break-word;
       white-space: pre-wrap;
       color: rgb(209, 190, 190);
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
 
       &-wrapper {
         max-height: 700px;
@@ -435,6 +465,10 @@
 
     &__content {
       padding: 0px 16px;
+
+      @media (max-width: 999.98px) {
+        padding: 0px 4px;
+      }
     }
 
     &__img {
@@ -464,6 +498,10 @@
     &__stat {
       gap: 4px;
       font-size: 20px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__edited {

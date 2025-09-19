@@ -59,6 +59,10 @@
 
     &__label {
       margin-left: 4px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.9em;
+      }
     }
 
     &__input {
@@ -72,8 +76,18 @@
       margin-top: 50px;
       gap: 20px;
 
+      @media (max-width: 499.98px) {
+        flex-direction: column;
+        gap: 8px;
+      }
+
       &-button {
         margin: 0;
+
+        @media (max-width: 999.98px) {
+          grid-template: auto / 50px 1fr;
+          font-size: 0.8em;
+        }
       }
     }
   }

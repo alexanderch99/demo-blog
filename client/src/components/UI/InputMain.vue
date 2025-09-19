@@ -26,7 +26,7 @@
 
     @media (max-width: 499.98px) {
       padding: 6px 12px;
-      font-size: 0.6em;
+      font-size: 0.7em;
     }
   }
 </style>

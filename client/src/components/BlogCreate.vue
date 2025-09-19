@@ -68,9 +68,19 @@
     border-radius: 16px;
     border: 3px solid #1e1d24;
 
+    @media (max-width: 999.98px) {
+      width: 100%;
+      height: 220px;
+      padding: 8px 8px 4px 8px;
+    }
+
     &__input {
       font-size: 18px;
       line-height: 18px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__submit {
@@ -80,6 +90,11 @@
       margin-top: auto;
       font-size: 18px;
       line-height: 18px;
+
+      @media (max-width: 999.98px) {
+        flex-direction: column;
+        font-size: 0.8em;
+      }
     }
   }
 </style>

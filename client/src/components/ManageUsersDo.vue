@@ -167,6 +167,10 @@
     &__button {
       width: 99%;
       margin-top: 10px;
+
+      @media (max-height: 999.98px) {
+        font-size: 1em;
+      }
     }
   }
 

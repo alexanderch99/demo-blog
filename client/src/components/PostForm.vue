@@ -107,7 +107,7 @@
       <div class="form-count">{{ postCopy.body?.length }} / 9999</div>
     </div>
     <div class="post-form__item">
-      <p>Теги</p>
+      <p class="post-form__label">Теги</p>
       <div class="post-form__tags">
         <PostTag
           class="post-form__tag"
@@ -186,6 +186,10 @@
       display: block;
       margin-left: 4px;
       margin-bottom: 8px;
+
+      @media (max-height: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__add-tag {
@@ -214,6 +218,11 @@
       gap: 8px;
       flex-wrap: wrap;
       margin-top: 8px;
+
+      @media (max-height: 999.98px) {
+        font-size: 0.9em;
+        gap: 4px;
+      }
     }
 
     &__tag {
@@ -242,6 +251,12 @@
       justify-content: center;
       gap: 20px;
       margin-top: 50px;
+
+      @media (max-height: 999.98px) {
+        flex-direction: column;
+        gap: 8px;
+        font-size: 0.8em;
+      }
 
       & > button {
         margin: 0;
