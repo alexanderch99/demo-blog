@@ -26,6 +26,7 @@
       height: 24px;
 
       @media (max-width: 999.98px) {
+        top: -6px;
         width: 18px;
         height: 18px;
       }

@@ -20,7 +20,8 @@
 
     @media (max-width: 599.98px) {
       width: 100%;
-      padding: 6px 0px;
+      padding: 5px 0px;
+      font-size: 0.9em;
     }
   }
 </style>

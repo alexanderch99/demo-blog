@@ -211,12 +211,20 @@
     display: flex;
     height: 100%;
 
+    @media (max-width: 999.98px) {
+      min-height: 500px;
+    }
+
     &__my-blogs {
       display: none;
     }
 
     &-wrapper {
       height: 100%;
+
+      @media (max-width: 999.98px) {
+        overflow-y: auto;
+      }
 
       &__close {
         display: none;
@@ -240,7 +248,7 @@
         bottom: 0;
         left: 0;
         background-color: #1e1d24;
-        z-index: 99999;
+        z-index: 999999;
         transition: top 0.3s ease;
 
         &__close {
@@ -250,7 +258,7 @@
           right: 16px;
           font-size: 40px;
           cursor: pointer;
-          z-index: 99999;
+          z-index: 999999;
           user-select: none;
         }
       }
@@ -303,6 +311,7 @@
 
     @media (max-width: 999.98px) {
       height: revert;
+      padding-bottom: 8px;
     }
   }
 </style>

@@ -126,7 +126,7 @@
             v-numeric
           />
         </div>
-        <div class="new-role-form__item">
+        <div class="new-role-form__item new-role-form__admin">
           <p>Права администратора?</p>
           <div class="new-role-form__is-admin">
             <div>
@@ -335,6 +335,12 @@
     &__item {
       position: relative;
       margin-top: 32px;
+    }
+
+    &__admin {
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__is-admin {

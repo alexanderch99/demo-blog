@@ -187,6 +187,11 @@
       width: calc(50% - 8px);
       min-height: 320px;
 
+      @media (max-width: 1299.98px) {
+        width: 100%;
+        min-height: 100px;
+      }
+
       &-button {
         width: 100%;
         height: 100%;

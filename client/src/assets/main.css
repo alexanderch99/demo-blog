@@ -92,3 +92,14 @@ a:focus {
   background-color: var(--site-background);
   padding: 0px 24px;
 }
+
+@media (max-width: 999.98px) {
+  .section-heading {
+    font-size: 0.9em;
+    line-height: 0.9em;
+  }
+
+  .form-count {
+    font-size: 0.8em;
+  }
+}

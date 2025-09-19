@@ -345,6 +345,12 @@
     border-radius: 16px;
     border: 3px solid #1e1d24;
 
+    @media (max-width: 1299.98px) {
+      width: 100%;
+      flex: 0 0 100%;
+      height: 500px;
+    }
+
     &__title {
       padding-right: 32px;
       overflow-wrap: break-word;

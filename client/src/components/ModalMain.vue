@@ -42,11 +42,24 @@
     overflow-y: auto;
     border-radius: 20px;
 
+    @media (max-width: 1099.98px) {
+      width: 99%;
+      padding-bottom: var(--footer-height);
+    }
+
     &__body {
       margin: 20px;
       padding: 50px;
       background-color: #1f2430;
       border-radius: 20px;
+
+      @media (max-width: 999.98px) {
+        padding: 20px;
+      }
+
+      @media (max-width: 499.98px) {
+        padding: 10px;
+      }
     }
 
     &__input {

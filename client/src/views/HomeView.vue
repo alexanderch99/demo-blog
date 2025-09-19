@@ -114,6 +114,10 @@
       width: 100%;
       height: 700px;
       flex: 0 0 auto;
+
+      @media (max-width: 999.98px) {
+        height: 500px;
+      }
     }
   }
 </style>
