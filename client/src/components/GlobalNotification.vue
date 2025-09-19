@@ -43,6 +43,14 @@
     cursor: pointer;
     z-index: 999999;
 
+    @media (max-width: 999.98px) {
+      width: 320px;
+      padding: 6px 12px;
+      right: 8px;
+      font-size: 0.8em;
+      line-height: 0.8em;
+    }
+
     &.error {
       background-color: #b91c1c;
     }

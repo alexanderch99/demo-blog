@@ -348,6 +348,12 @@
       position: absolute;
       top: 38px;
       right: 20px;
+
+      @media (max-width: 999.98px) {
+        > * {
+          top: -6px;
+        }
+      }
     }
 
     &__subitem {

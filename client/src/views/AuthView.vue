@@ -14,7 +14,10 @@
   const router = useRouter();
 
   import { useAuthStore } from "@/stores/auth-store";
+  import { useGlobalNotificationStore } from "@/stores/global-notification-store";
+
   const authStore = useAuthStore();
+  const globalNotificationStore = useGlobalNotificationStore();
 
   const user = ref({
     username: "",
@@ -65,9 +68,10 @@
 
         authStore.logIn(payload);
         router.push("/");
+        globalNotificationStore.showNotification("Успешный вход");
         return;
       } catch (error) {
-        handleAxiosError(error);
+        handleAxiosError(error, globalNotificationStore.showNotification);
       }
     } else if (authType.value == "reg") {
       try {
@@ -79,9 +83,10 @@
 
         authStore.logIn(payload);
         router.push("/");
+        globalNotificationStore.showNotification("Успешная регистрация и вход");
         return;
       } catch (error) {
-        handleAxiosError(error);
+        handleAxiosError(error, globalNotificationStore.showNotification);
       }
     } else {
       return false;
@@ -248,6 +253,10 @@
     background-color: #1f2430;
     border-radius: 10px;
 
+    @media (max-width: 999.98px) {
+      padding: 20px;
+    }
+
     &__source-link {
       color: snow;
       text-decoration: underline snow !important;
@@ -262,6 +271,10 @@
       padding: 20px;
       background-color: #1f2430;
       border-radius: 10px;
+
+      @media (max-width: 999.98px) {
+        top: 70px;
+      }
     }
 
     &__password-rule {
@@ -274,6 +287,10 @@
       align-items: center;
       gap: 40px;
       color: gray;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__button.active {
@@ -293,6 +310,10 @@
         position: absolute;
         top: 25px;
         left: 15px;
+
+        @media (max-width: 999.98px) {
+          font-size: 0.8em;
+        }
       }
 
       &-password {
@@ -310,11 +331,20 @@
         cursor: pointer;
         width: 36px;
         height: 36px;
+
+        @media (max-width: 999.98px) {
+          width: 24px;
+          height: 24px;
+        }
       }
     }
 
     &__submit {
       margin-top: 40px;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.8em;
+      }
     }
 
     &__forgot-password {
@@ -324,6 +354,10 @@
       line-height: 16px;
       font-family: monospace;
       color: gray;
+
+      @media (max-width: 999.98px) {
+        font-size: 0.7em;
+      }
     }
 
     &__fake-accounts {
@@ -334,13 +368,25 @@
       text-align-last: left;
       cursor: default;
 
+      @media (max-width: 999.98px) {
+        text-align-last: center;
+      }
+
       > div p:last-child {
         color: snow;
         margin-left: -8px;
+
+        @media (max-width: 999.98px) {
+          margin-left: 0px;
+        }
       }
 
       > div p:first-child {
         margin-top: 4px;
+
+        @media (max-width: 999.98px) {
+          margin-top: 12px;
+        }
       }
     }
   }
@@ -353,5 +399,9 @@
 
   .fake-account {
     width: calc(50% - 16px);
+
+    @media (max-width: 999.98px) {
+      width: 100%;
+    }
   }
 </style>

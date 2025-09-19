@@ -224,6 +224,7 @@
 
       @media (max-width: 999.98px) {
         overflow-y: auto;
+        padding: 0px 8px;
       }
 
       &__close {
