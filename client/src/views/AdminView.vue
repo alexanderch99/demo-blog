@@ -89,8 +89,7 @@
     min-height: calc(100vh - var(--footer-height));
 
     @media (max-width: 1099.98px) {
-      margin-top: 40px;
-      margin-left: 0px;
+      margin: 40px 0px;
     }
 
     &__line-charts {

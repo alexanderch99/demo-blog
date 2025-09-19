@@ -7,7 +7,7 @@
   import UsersMain from "./svg/UsersMain.vue";
   import ChartLine from "./svg/ChartLine.vue";
   import BarsMain from "./svg/BarsMain.vue";
-  import { onBeforeRouteUpdate } from "vue-router";
+  import { onBeforeRouteLeave, onBeforeRouteUpdate } from "vue-router";
 
   const authStore = useAuthStore();
 
@@ -15,6 +15,11 @@
 
   onBeforeRouteUpdate(() => {
     isMobileAdminNavAcitve.value = false;
+    document.body.style.overflowY = "";
+  });
+
+  onBeforeRouteLeave(() => {
+    document.body.style.overflowY = "";
   });
 
   watch(
