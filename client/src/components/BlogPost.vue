@@ -396,6 +396,7 @@
 
       @media (max-width: 999.98px) {
         font-size: 0.8em;
+        padding-right: 76px;
       }
     }
 
