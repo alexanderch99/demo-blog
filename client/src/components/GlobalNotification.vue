@@ -46,7 +46,8 @@
     @media (max-width: 999.98px) {
       width: 320px;
       padding: 6px 12px;
-      right: 8px;
+      right: 50%;
+      transform: translateX(50%);
       font-size: 0.8em;
       line-height: 0.8em;
     }
