@@ -244,8 +244,8 @@
       color: unset;
 
       @media (max-width: 999.98px) {
-        min-width: 200px;
-        min-height: revert;
+        min-width: 100%;
+        min-height: 40px;
         font-size: 0.8em;
         line-height: 0.8em;
       }
@@ -265,6 +265,7 @@
     border-radius: 12px;
 
     @media (max-width: 999.98px) {
+      width: 100%;
       font-size: 0.8em;
       line-height: 0.8em;
       padding: 6px 12px;
