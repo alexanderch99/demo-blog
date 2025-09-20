@@ -14,6 +14,9 @@
   import ButtonMain from "@/components/UI/ButtonMain.vue";
   import InputMain from "@/components/UI/InputMain.vue";
   import toMilliseconds from "@/utils/to-milliseconds";
+  import { useGlobalNotificationStore } from "@/stores/global-notification-store";
+
+  const globalNotificationStore = useGlobalNotificationStore();
 
   const isUsersLoaded = ref(false);
   const users = ref([]);
@@ -43,7 +46,7 @@
 
       users.value = response.data;
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     } finally {
       isUsersLoaded.value = true;
     }
@@ -55,7 +58,7 @@
 
       roles.value = response.data;
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -79,8 +82,9 @@
     try {
       const response = await adminService.resetUserNickname(userId);
       await getAllUsers();
+      globalNotificationStore.showNotification("Никнейм пользователя сброшен");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -88,8 +92,11 @@
     try {
       const response = await adminService.resetUserPublicInfo(userId);
       await getAllUsers();
+      globalNotificationStore.showNotification(
+        "Публичная информация профиля пользователя сброшена",
+      );
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -97,8 +104,9 @@
     try {
       const response = await adminService.resetUserAvatar(userId);
       await getAllUsers();
+      globalNotificationStore.showNotification("Аватар пользователя сброшен");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -111,8 +119,9 @@
       const response = await adminService.userBan(userId, banExpires);
       await getAllUsers();
       hideBanForm();
+      globalNotificationStore.showNotification("Пользователь забанен");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -122,8 +131,9 @@
       console.log(response.data);
       await getAllUsers();
       hideBanForm();
+      globalNotificationStore.showNotification("Пользователь разбанен");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -141,8 +151,9 @@
       const response = await adminService.changeUserRole(userId, newRole.value);
       await getAllUsers();
       hideRoleForm();
+      globalNotificationStore.showNotification("Группа пользователя изменена");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 

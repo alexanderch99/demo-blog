@@ -241,7 +241,7 @@
         />
         <ButtonPinSlash
           v-else
-          class="user-blog__button user-blog__button--pin"
+          class="user-blog__button user-blog__button--pin-slash"
           @click="pinToggleBlog"
         />
         <ButtonEyeSlash
@@ -251,7 +251,7 @@
         />
         <ButtonEye
           v-else
-          class="user-blog__button user-blog__button--eye-slash"
+          class="user-blog__button user-blog__button--eye"
           @click="hideToggleBlog"
         />
         <ButtonDel

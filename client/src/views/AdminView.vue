@@ -6,8 +6,13 @@
   import adminService from "@/services/admin-service";
   import { formatDateTimeSimple } from "@/utils/format-date";
   import { useRoute } from "vue-router";
+  import { useAuthStore } from "@/stores/auth-store";
+  import { useGlobalNotificationStore } from "@/stores/global-notification-store";
 
   const route = useRoute();
+
+  const authStore = useAuthStore();
+  const globalNotificationStore = useGlobalNotificationStore();
 
   const postsData = ref({
     labels: [],
@@ -57,7 +62,21 @@
     }
   }
 
-  onMounted(() => {
+  async function checkAdmin() {
+    if (typeof authStore.isAuth == "object") {
+      await authStore.isAuth;
+    }
+
+    if (!authStore?.userData?.role?.isAdmin) {
+      globalNotificationStore.showNotification(
+        "Вход не администратору допускается в целях демонстрации, но функционал не будет доступен",
+        false,
+      );
+    }
+  }
+
+  onMounted(async () => {
+    await checkAdmin();
     getStats();
   });
 </script>

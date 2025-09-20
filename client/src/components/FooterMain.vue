@@ -11,7 +11,7 @@
   >
     <div class="container footer__container">
       <div class="footer__items">
-        <div class="footer__copy">2025 DemoSite</div>
+        <div class="footer__copy">2025 DemoBlog</div>
         <div class="terms">
           <RouterLink
             class="footer__link no-active-link"

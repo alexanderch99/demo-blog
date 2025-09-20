@@ -49,7 +49,7 @@
       isMyProfile.value = false;
     } catch (error) {
       router.push("/404");
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -92,7 +92,7 @@
       closeModal();
       globalNotificationStore.showNotification("Информация профиля обновлена");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 

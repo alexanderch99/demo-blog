@@ -7,8 +7,11 @@
   import InputMain from "@/components/UI/InputMain.vue";
   import SpinnerMain from "@/components/UI/SpinnerMain.vue";
   import adminService from "@/services/admin-service";
+  import { useGlobalNotificationStore } from "@/stores/global-notification-store";
   import handleAxiosError from "@/utils/handle-axios-error";
   import { onMounted, ref } from "vue";
+
+  const globalNotificationStore = useGlobalNotificationStore();
 
   const roles = ref([]);
 
@@ -26,7 +29,7 @@
       const response = await adminService.getAllRoles();
       roles.value = response.data;
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     } finally {
       isRolesLoaded.value = true;
     }
@@ -57,8 +60,9 @@
 
       await getAllRoles();
       cancelNewRoleCreating();
+      globalNotificationStore.showNotification("Группа создана");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
@@ -74,8 +78,9 @@
       const response = await adminService.deleteRole(roleId);
       console.log(response.data);
       await getAllRoles();
+      globalNotificationStore.showNotification("Группа удалена");
     } catch (error) {
-      handleAxiosError(error);
+      handleAxiosError(error, globalNotificationStore.showNotification);
     }
   }
 
